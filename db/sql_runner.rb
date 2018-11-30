@@ -1,15 +1,18 @@
 require('pg')
 
-class SqlRunner()
+class SqlRunner
 
-  def run(sql, values = [])
+  def self.run(sql, values = [])
     begin
-      db = PG.connect(dbname: 'codeclan_cinema', dbhost: 'localhost')
+      db = PG.connect({dbname: 'codeclan_cinema', host: 'localhost'})
       db.prepare("query", sql)
-      db.exec_prepared("query", values)
+      result = db.exec_prepared("query", values)
     ensure
-      db.close
+      db.close() if db != nil
     end
+    return result
   end
 
 end
+
+require('pg')
