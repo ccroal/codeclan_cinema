@@ -2,6 +2,9 @@ require('pry')
 require_relative('./models/customer.rb')
 require_relative('./models/film.rb')
 
+Customer.delete_all
+Film.delete_all
+
 customer1 = Customer.new({'name' => 'David', 'funds' => 100})
 customer1.save()
 customer2 = Customer.new({'name' => 'Sarah', 'funds' => 75})
