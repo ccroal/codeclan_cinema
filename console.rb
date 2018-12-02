@@ -38,5 +38,7 @@ customer1.update
 film1.title = 'The Matrix 2'
 film1.update
 
+customer1.buy_ticket(film1)
+customer2.buy_ticket(film3)
 binding.pry
 nil

@@ -44,4 +44,15 @@ class Film
     SqlRunner.run(sql, values)
   end
 
+  def customer_count()
+    sql = "SELECT customers.* FROM customers
+    INNER JOIN tickets ON
+    customers.id = tickets.customer_id
+    WHERE tickets.film_id = $1"
+    values = [@id]
+    customers_array = SqlRunner.run(sql, values)
+    customers = customers_array.count
+    return customers
+  end
+
 end

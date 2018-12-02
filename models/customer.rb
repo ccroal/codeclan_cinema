@@ -1,4 +1,5 @@
 require_relative("../db/sql_runner.rb")
+require_relative('./film.rb')
 
 class Customer
 
@@ -54,4 +55,14 @@ class Customer
     films = films_array.count
     return films
   end
+
+  def decrease_funds(film)
+    @funds -= film.price
+  end
+
+  def buy_ticket(film)
+    decrease_funds(film)
+    update
+  end
+
 end
